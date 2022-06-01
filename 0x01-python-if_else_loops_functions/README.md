@@ -1,1 +1,1 @@
-if else loop fuctions
+if else loop functions
