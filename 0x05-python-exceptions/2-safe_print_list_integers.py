@@ -9,8 +9,6 @@ def safe_print_list_integers(my_list=[], x=0):
         except TypeError:
             continue
         except ValueError:
-            continue
-        except IndexError:
-            break
+            continue          
     print("")
     return (no_of_int)
