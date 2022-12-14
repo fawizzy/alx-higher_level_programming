@@ -1,18 +1,22 @@
 #!/usr/bin/node
 
-const request = require('request')
-const URL = process.argv[2]
-let completed = {}
-request(URL, (error, response, body) => {
-    todos = JSON.parse(body)
-    todos.forEach(element => {
-        completed[element["userId"]] = 0
-    })
-    todos.forEach(element => {
-        // completed[element["userId"]] = 1
-        if (element["completed"] === true){
-            completed[element["userId"]] += 1
-        }
-    });
-    console.log(completed)
-})
+const request = require('request');
+
+request(process.argv[2], function (error, response, body) {
+  if (error) {
+    console.error(error);
+  }
+  const dict = JSON.parse(body).reduce((acc, elem) => {
+    if (!acc[elem.userId]) {
+      if (elem.completed) {
+        acc[elem.userId] = 1;
+      }
+    } else {
+      if (elem.completed) {
+        acc[elem.userId] += 1;
+      }
+    }
+    return acc;
+  }, {});
+  console.log(dict);
+});
