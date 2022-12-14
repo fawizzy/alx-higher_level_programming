@@ -1,6 +1,10 @@
 #!/usr/bin/node
-const language = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+
+// script to print strings using a loop
+
 let i;
-for (i in language) {
-  console.log(language[i]);
+const myString = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+
+for (i = 0; i < 3; i++) {
+  console.log(myString[i]);
 }
